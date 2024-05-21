@@ -1,5 +1,6 @@
 package org.bookstore.repository.impl;
 
+import java.util.List;
 import org.bookstore.model.Book;
 import org.bookstore.repository.BookRepository;
 import org.hibernate.Session;
@@ -7,8 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public class BookRepositoryImpl implements BookRepository {
