@@ -6,5 +6,5 @@ import org.bookstore.model.Book;
 public interface BookService {
     Book save(Book book);
 
-    List<Book> getAll();
+    List<Book> findAll();
 }

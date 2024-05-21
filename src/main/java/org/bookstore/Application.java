@@ -37,7 +37,7 @@ public class Application {
                 bookService.save(taxi);
                 bookService.save(matrix);
 
-                System.out.println(bookService.getAll());
+                System.out.println(bookService.findAll());
             }
         };
     }
