@@ -1,5 +1,6 @@
 package org.bookstore.mapper;
 
+import java.util.List;
 import org.bookstore.config.MapperConfig;
 import org.bookstore.dto.BookDto;
 import org.bookstore.dto.CreateBookRequestDto;
@@ -11,4 +12,6 @@ public interface BookMapper {
     BookDto toDto(Book book);
 
     Book toModel(CreateBookRequestDto requestDto);
+
+    List<BookDto> toDtoList(List<Book> books);
 }

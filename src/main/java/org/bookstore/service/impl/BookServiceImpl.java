@@ -25,22 +25,18 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<BookDto> findAll() {
-        return bookRepository.findAll().stream()
-                .map(bookMapper::toDto)
-                .toList();
+        return bookMapper.toDtoList(bookRepository.findAll());
     }
 
     @Override
     public BookDto getBookById(Long id) {
         Book book = bookRepository.findById(id).orElseThrow(() ->
-                new EntityNotFoundException("Cant fint book by id " + id));
+                new EntityNotFoundException("Cant fint book by id: " + id));
         return bookMapper.toDto(book);
     }
 
     @Override
     public List<BookDto> getAllByName(String title) {
-        return bookRepository.getAllByName(title).stream()
-                .map(bookMapper::toDto)
-                .toList();
+        return bookMapper.toDtoList(bookRepository.getAllByName(title));
     }
 }
