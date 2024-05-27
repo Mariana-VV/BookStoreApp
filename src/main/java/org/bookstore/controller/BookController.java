@@ -39,7 +39,7 @@ public class BookController {
         return bookService.getBookById(id);
     }
 
-    @GetMapping("/title")
+    @GetMapping("/search")
     public List<BookDto> findAllByName(@RequestParam String title) {
         return bookService.findAllByTitle(title);
     }

@@ -2,6 +2,8 @@ package org.bookstore.service.impl;
 
 import jakarta.persistence.EntityNotFoundException;
 import java.util.List;
+
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.bookstore.dto.BookDto;
 import org.bookstore.dto.CreateBookRequestDto;
@@ -36,9 +38,7 @@ public class BookServiceImpl implements BookService {
     }
 
     public List<BookDto> findAllByTitle(String title) {
-        return bookRepository.findAllByTitleIgnoreCase(title).stream()
-                .map(bookMapper::toDto)
-                .toList();
+        return bookMapper.toDtoList(bookRepository.findAllByTitleIgnoreCase(title));
     }
 
     @Override
@@ -47,6 +47,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional
     public BookDto update(Long id, CreateBookRequestDto requestDto) {
         Book book = bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cant find book by id " + id));
